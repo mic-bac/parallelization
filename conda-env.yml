@@ -1,7 +1,8 @@
-name: parallel-quarto
+name: parallel
 dependencies:
   - python=3.11
-  - r-base=4.2 -y
+  - r-base
+  - r-essentials
   - pip
   - pip:
       - notebook
@@ -10,4 +11,3 @@ dependencies:
       - numpy
       - pandas
       - matplotlib
-      - rpy2

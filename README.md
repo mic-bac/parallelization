@@ -1,53 +1,51 @@
+
 # Parallelization
-Examples for parallelization using python and R
+
+Examples for parallelization using Python and R.
 
 ## Setup
-To illustrate how parallelization works using python and R we'll use a conda environment manager and quarto running on Ubuntu wSL.
 
-Here is the setup definition:
+This project demonstrates parallelization using Python and R, managed with Conda and Quarto on Ubuntu WSL.
 
-Install Conda in WSL
+### 1. Install Conda in WSL
 
 ```bash
-# Download installer
+# Download Miniconda installer
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 # Run installer
 bash Miniconda3-latest-Linux-x86_64.sh
 
-# Follow the prompts, then:
+# Follow the prompts, then activate Conda
 source ~/.bashrc
 
-# TROUBLESHOOT if conda command is not found
-# Replace <PATH-TO-CONDA> with the file path to your conda installation to add it to .bashrc file
+# If 'conda' is not found, add it to your .bashrc
 <PATH-TO-CONDA>/bin/conda init bash
 
-# Confirm it is working
+# Confirm installation
 conda --version
 ```
 
-## Create the environment
+### 2. Create the Conda Environment
 
 ```bash
-# create the conda environment
 conda env create -f conda-env.yml
 
-# Install IRkernel from R
-R --quiet -e "install.packages('IRkernel'); IRkernel::installspec(user = FALSE)"
-
-# Check and list all installed kernels
-jupyter kernelspec list
+# activate the environment after creation
+conda activate parallel
 ```
+Make sure to replace `parallel` with the name of your environment if it differs.
 
-## Install quarto
+Check if the environment is activated:
+
 ```bash
-# Install
-wget https://quarto.org/download/latest/quarto-linux-amd64.deb
-sudo dpkg -i quarto-linux-amd64.deb
-
-# Check installation
-quarto check
+# Check active environments (active environment will be marked with an asterisk)
+conda info --envs
 ```
 
-## Set-up variable sharing
-Install rpy2 in the conda environment
+### 3. Install R packages for VSCode
+
+```bash
+# For more handy packages see VSCode documentation for using R in VSCode
+R --quiet -e "install.packages(c('languageserver'), repos='https://cloud.r-project.org')"
+```
