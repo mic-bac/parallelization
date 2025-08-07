@@ -19,12 +19,12 @@ from multiprocessing import Pool, cpu_count
 
 # %% [markdown]
 # ## Load the Dataset
-# We'll use a large CSV file with random numbers. Make sure `big_data.csv` exists in your folder.
+# We'll use a large CSV file with random numbers. Make sure `parallel_big_data.csv` exists in your folder.
 
 # %%
 # --- 2. Load the dataset ---
 print("Loading dataset... (this may take a moment)")
-df = pd.read_csv('big_data.csv')
+df = pd.read_csv('parallel_big_data.csv')
 print(f"Dataset shape: {df.shape}")
 
 # %% [markdown]
