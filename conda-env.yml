@@ -13,3 +13,6 @@ dependencies:
       - numpy
       - pandas
       - matplotlib
+      # Optional: For database (PostgreSQL) support
+      - sqlalchemy
+      - psycopg2-binary

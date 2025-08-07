@@ -9,7 +9,7 @@ library(parallel)
 
 # --- 2. Load the dataset ---
 cat("Loading dataset... (this may take a moment)\n")
-df <- read.csv("big_data.csv")
+df <- read.csv("parallel_big_data.csv")
 cat(sprintf("Dataset shape: %d rows x %d columns\n", nrow(df), ncol(df)))
 
 # --- 3. Define a slow row operation ---

@@ -11,7 +11,7 @@ Usage:
 import pandas as pd
 import numpy as np
 
-def generate_dataset(rows=1_000_000, cols=10, filename="big_data.csv"):
+def generate_dataset(rows=1_000_000, cols=10, filename="parallel_big_data.csv"):
     """
     Generate a random dataset and save it as a CSV file.
 
