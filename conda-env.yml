@@ -1,7 +1,7 @@
 name: parallel
 dependencies:
   - python=3.11
-  - r-base
+  - r-base=4.3
   - r-essentials
   - r-languageserver
   - r-httpgd
