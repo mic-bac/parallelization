@@ -1,0 +1,6 @@
+# R files
+.RData
+.Rhistory
+
+# Data files
+*.csv

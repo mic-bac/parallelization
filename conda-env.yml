@@ -3,6 +3,8 @@ dependencies:
   - python=3.11
   - r-base
   - r-essentials
+  - r-languageserver
+  - r-httpgd
   - pip
   - pip:
       - notebook
