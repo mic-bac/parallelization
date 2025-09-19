@@ -24,7 +24,7 @@ from multiprocessing import Pool, cpu_count
 # %%
 # --- 2. Load the dataset ---
 print("Loading dataset... (this may take a moment)")
-df = pd.read_csv('parallel_big_data.csv')
+df = pd.read_csv('../data/parallel_big_data.csv')
 print(f"Dataset shape: {df.shape}")
 
 # %% [markdown]
@@ -69,7 +69,7 @@ print(f"Serial time: {time_end - time_start:.2f} seconds")
 print("\n--- Parallel computation (multiprocessing.Pool) ---")
 n_cpu = cpu_count()
 print(f"Number of CPUs available: {n_cpu}")
-n_cpu = min(6, n_cpu)  # Reserve some CPUs for other tasks
+n_cpu = min(4, n_cpu)  # Reserve some CPUs for other tasks
 print(f"Using {n_cpu} processes for parallel computation.")
 
 time_start = time()
@@ -97,3 +97,5 @@ print(f"Numpy vectorized time: {time_end - time_start:.2f} seconds")
 # - **Numpy vectorized:** Fastest, uses optimized C code under the hood.
 #
 # For real-world heavy computations, parallelization can greatly speed up your code!
+
+# %%
