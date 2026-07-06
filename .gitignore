@@ -4,3 +4,5 @@
 
 # Data files
 *.csv
+# uv virtual environment
+.venv/

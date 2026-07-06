@@ -5,6 +5,25 @@
 
 ---
 
+## 🎓 Used in the Streamlit Teaching App
+
+This repo is a standalone lesson **and** a data source for the parent **Streamlit teaching
+app** (`../Home.py`, run with `streamlit run Home.py` from the workspace root). The app's
+**Parallelization** page (`../pages/2_Parallelization.py`) reuses this code:
+
+- The Serial / Parallel / Vectorized logic from `parallel/parallel.py` is refactored into
+  importable, benchmarkable functions in `../utils/compute_utils.py`, driven live by a
+  "Start Benchmark Race" button.
+- `parallel/parallel.py` and `parallel/parallel.R` are displayed **side by side** in the app
+  for comparison. The R script is shown for teaching only and is **never executed**.
+- The dataset logic in `data/create_dataset.py` is adapted into `../utils/data_generator.py`
+  (returns an in-memory, `@st.cache_data`-cached DataFrame instead of writing the 184 MB CSV);
+  the app generates data on the fly at a slider-selected size rather than loading the CSV.
+
+Nothing here depends on the app — this repo still runs on its own via the Conda setup below.
+
+---
+
 
 ## 📁 Project Structure
 
@@ -65,46 +84,27 @@ This project includes simple scripts to show how to write and read data from a P
 
 ## 📦 Setup Instructions
 
-### 1️⃣ Install Conda in WSL (optional)
-
-If you haven't installed Conda yet, follow these steps to set it up in your WSL environment:
-
-```bash
-# Download Miniconda installer
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-
-# Run the installer
-bash Miniconda3-latest-Linux-x86_64.sh
-
-# Reload your shell to activate Conda
-source ~/.bashrc
-
-# If 'conda' is not found, initialize it:
-<PATH-TO-CONDA>/bin/conda init bash
-
-# Confirm installation
-conda --version
-```
-
----
-
-### 2️⃣ Create & Activate the Conda Environment
+The **Python** examples use [**uv**](https://docs.astral.sh/uv/) on **Python 3.13** for a
+fast, reproducible environment (defined in `pyproject.toml` + `uv.lock` + `.python-version`):
 
 ```bash
-conda env create -f conda_env.yaml
-
-# Activate the environment after creation
-conda activate parallel
+uv sync                              # create the locked environment (.venv)
+uv run python parallel/parallel.py   # run the Python parallelization example
 ```
 
-> **Note:** Replace `parallel` with your environment name if it differs.
+Jupyter tooling (`notebook`, `jupyter`, `ipykernel`) is available via the dev group and is
+installed automatically by `uv sync`.
 
-To check if the environment is activated:
+### R (optional)
 
-```bash
-# List all Conda environments (the active one is marked with an asterisk)
-conda info --envs
-```
+The **R** script (`parallel/parallel.R`) is provided to show the *same* Serial / Parallel /
+Vectorized approach in R. It is displayed side-by-side in the parent Streamlit teaching app
+and **does not need to be executed** there. If you want to run it standalone, install R
+separately (e.g. system R via `apt`, or a conda env with `r-base`) — R is intentionally
+**not** part of the uv environment.
+
+> The original `conda_env.yaml` (which bundled Python **and** R) is kept for reference if you
+> prefer a single conda env with R included.
 
 ---
 
