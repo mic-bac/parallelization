@@ -1,0 +1,23 @@
+[project]
+name = "parallelization"
+version = "0.1.0"
+description = "Parallelization teaching examples (Python). The R script is kept for side-by-side display only and is not executed here."
+requires-python = ">=3.13"
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+    # Optional PostgreSQL support (db_rw_optional.py)
+    "sqlalchemy",
+    "psycopg2-binary",
+]
+
+[dependency-groups]
+dev = [
+    "notebook",
+    "jupyter",
+    "ipykernel",
+]
+
+[tool.uv]
+package = false
