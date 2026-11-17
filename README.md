@@ -65,6 +65,16 @@ This project demonstrates how to speed up data processing in Python and R using 
 - How to use parallel tools in both Python and R
 - How to compare performance and choose the right approach
 
+**In plain words — two kinds of slow, two kinds of fix:**
+
+| Slow because it… | Everyday picture | Fix |
+|---|---|---|
+| **computes** a lot (CPU-bound) | one cashier scans a long queue item by item | **parallel**: open four tills — faster, but opening tills and splitting the queue takes time, so never 4× · **vectorized**: a scanner that reads the whole trolley at once (NumPy, `rowMeans`) |
+| **waits** a lot (I/O-bound) | ordering pizzas by phone, one call after the other, waiting for each delivery | **threads**: five colleagues phone at the same time · **async**: one person orders everything online and opens the door as each pizza arrives |
+
+Using more processes for waiting works too, but it's like hiring a new office worker with
+their own desk for every phone call — expensive for a job that is mostly waiting.
+
 ---
 
 
